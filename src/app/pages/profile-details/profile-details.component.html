@@ -1,0 +1,73 @@
+<div class="h-100 w-100 bg-prdimary p-5" *ngIf="uiState$ | async as loadingState">
+    <!-- Main container starts here -->
+
+    <div class="container" *ngIf="
+        !['ERROR', 'NOT_FOUND'].includes(loadingState.profileDetailState);
+        else profileError
+      ">
+      <!-- user details section starts here -->
+      <fyle-user-details-loader *ngIf="loadingState.profileDetailState === 'LOADING'"></fyle-user-details-loader>
+      <fyle-user-details *ngIf="loadingState.profileDetailState === 'LOADED'" [userDetails]="profileData$ | async">
+      </fyle-user-details>
+      <!-- user details sections ends here -->
+      <!-- repo section starts here -->
+      <div class="row">
+        <div class="align-items-center col-12 d-flex flex-wrap">
+          <!-- loading state -->
+          <ng-container *ngIf="loadingState.repoDetailState === 'LOADING'">
+            <div class="col-lg-6 my-2" *ngFor="let x of [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]">
+              <fyle-card-loader></fyle-card-loader>
+            </div>
+          </ng-container>
+          <!-- data loaded state  -->
+          <ng-container *ngIf="loadingState.repoDetailState === 'LOADED'">
+            <fyle-repo-card [repoDetails]="repo" *ngFor="let repo of repoData$ | async" class="col-lg-6 my-2">
+            </fyle-repo-card>
+          </ng-container>
+          <!-- error state for repo -->
+          <ng-container *ngIf="loadingState.repoDetailState === 'ERROR'">
+            <fyle-no-data class="col-lg-12" [message]="errorMessages.REPO_ERROR"></fyle-no-data>
+          </ng-container>
+          <!-- no repo in account  -->
+          <ng-container *ngIf="
+              loadingState.repoDetailState === 'LOADED' &&
+              (repoData$ | async)?.length === 0
+            ">
+            <fyle-no-data class="col-lg-12" [message]="errorMessages.NO_REPO_IN_ACCOUNT"></fyle-no-data>
+          </ng-container>
+        </div>
+      </div>
+      <!-- pagination section starts here -->
+      <ng-container *ngIf="pagiantion$ | async as pagination">
+        <p-paginator *ngIf="(profileData$ | async)?.public_repos > 0" [first]="1" [alwaysShow]="false" [pageLinkSize]="pagination.perPage" (onPageChange)="getProfileRepo($event)" [rows]="10" [totalRecords]="allRepoCount" [showFirstLastIcon]="false" [rowsPerPageOptions]="[10, 20, 30,40,50,60,70,80,90,100]"></p-paginator>
+      </ng-container>
+    </div>
+    <!-- global error section for incorrect user and unknown errors  -->
+    <ng-template #profileError>
+      <div class="row">
+        <div class="align-items-center col-12 d-flex flex-wrap">
+          <!-- if username is not found -->
+          <fyle-no-data *ngIf="
+              loadingState.profileDetailState === 'NOT_FOUND';
+              else unknownError
+            " class="col-lg-12" [message]="errorMessages.PROFILE_ERROR">
+            <a class="mx-auto mt-5 p-2 btn btn-warning" [routerLink]="['/profile']">Re-Enter
+              username</a>
+          </fyle-no-data>
+          <!-- if unknown error encountered -->
+          <ng-template #unknownError>
+            <fyle-no-data class="col-lg-12">
+                <div class="d-flex justify-content-center">
+                    <div >
+                        <a class=" mt-5 p-2 btn btn-warning mr-2"  [routerLink]="['/profile']">Go Back</a>
+                        <button class="mt-5 p-2 btn btn-primary ml-2 pointer" (click)="ngOnInit()">Retry</button>
+                    </div>
+                    
+                </div>
+              
+            </fyle-no-data>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </div>

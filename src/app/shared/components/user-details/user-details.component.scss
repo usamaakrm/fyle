@@ -1,0 +1,17 @@
+img{
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .bio{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rounded-circle{
+    border-radius: 50%;
+  }
+
+  

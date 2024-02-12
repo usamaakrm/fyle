@@ -1,0 +1,12 @@
+.repo-container div {
+  width: 45%;
+  height: 200px;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 15px rgba(54, 54, 54, 0.055);
+          box-shadow: 5px 5px 15px rgba(54, 54, 54, 0.055);
+  border: 2px solid rgba(97, 97, 97, 0.282);
+  position: relative;
+}
+/*# sourceMappingURL=profile-details.component.css.map */

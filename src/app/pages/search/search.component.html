@@ -1,0 +1,11 @@
+<div class=" d-flex h-100 w-100 ">
+    <div class="m-auto d-flex flex-column">
+        <img class="mx-auto mb-2" src="../../../assets/first.png" style="width: 500px;" />
+        <div class="p-inputgroup">
+            <input (keydown.enter)="username.trim().length > 0 ? navigate(): null" [(ngModel)]="username" style="width:500px" type="text" pInputText placeholder="Enter Github Username"
+                [ngModelOptions]="{standalone: true}" minlength="1" required>
+            <button [disabled]="username.trim().length === 0" (click)="navigate()" type="button" pButton
+                icon="pi pi-arrow-right" styleClass="p-button-warn"></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class=" col-lg-12 repo">
+    <h4 class="demo">{{repoDetails.name}}</h4>
+    <p class="description">{{repoDetails.description}}</p>
+    <div *ngIf="repoDetails.topics.length" class="mt-2 d-flex slide">
+      <span *ngFor="let topic of repoDetails?.topics" class="topic badge tech mr-2">{{topic}}</span>    
+    </div>
+    <div class="flex">
+      <div class="mt-3 mr-2">
+      <img src="../../../../assets/dot-svgrepo-com.svg" width="10px" alt="">
+      </div>
+      <div>
+      <small class="time-repo desc"> Updated on: {{repoDetails.pushed_at}}</small>
+
+      </div>
+    </div>
+  </div>

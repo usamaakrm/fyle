@@ -1,0 +1,47 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+body{
+  font-family: 'Poppins', sans-serif;
+}
+.btn-warning{
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+.btn 
+{
+display: inline-block;
+font-weight: 400;
+color: #212529;
+text-align: center;
+vertical-align: middle;
+-webkit-user-select: none;
+user-select: none;
+border: 1px solid #0000;
+padding: 0.375rem 0.75rem;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: 0.25rem;
+text-decoration: none;
+transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.text-danger{
+    color: #dc3545!important;
+}
+h4 {
+    font-size: 1.25rem !important;
+}
+
+a:visited{
+ color:#000000
+}
+.text-primary{
+    color: #2196f3 !important;
+}
+.btn-primary{
+    color: #fff;
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
