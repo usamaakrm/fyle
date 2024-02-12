@@ -20,7 +20,7 @@ describe('SearchComponent', () => {
       // declarations: [ SearchComponent ]
       imports:[
         RouterTestingModule.withRoutes(
-          [{path: 'profile/singhsugga', component: BlankComponent}]
+          [{path: 'profile/usamaakrm', component: BlankComponent}]
         )
       ]
     })
@@ -36,7 +36,7 @@ describe('SearchComponent', () => {
   });
 
   it('should navigate to profile details',() => {
-    component.username = 'singhsugga'
+    component.username = 'usamaakrm'
     component.navigate()
     fixture.detectChanges()
     // TODO: Write expect ststement here
